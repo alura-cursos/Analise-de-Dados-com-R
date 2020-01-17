@@ -1,0 +1,52 @@
+---
+title: "Análise e visualização de dados: Ciência de dados com R"
+output: html_notebook
+--- 
+
+# Outra maneira de olhar a estrutura da base de dados
+```{r}
+glimpse(aluguel)
+```
+
+#Vericando e retirando duplicidades no dataframe aluguel
+```{r}
+#Utilizando a base aluguel_t, já sem duplicidades
+aluguel_t = unique(aluguel)
+
+glimpse(aluguel_t)
+
+```
+
+
+#Fazendo a seleção de campos da base de dados
+```{r}
+selec1 = select(aluguel_t, Tipo, Bairro, Quartos, Area, Valor)
+
+glimpse(selec1)
+```
+
+#Outra selecao - retirando campos da base de dados
+```{r}
+selec2 = select(aluguel_t, -IPTU)
+
+glimpse(selec2)
+```
+
+#usando seleção contendo alguns caracteres
+```{r}
+#busca na base de dados campos que contenham as palavras "Cond"
+select3 = select(aluguel_t, contains("Cond"))
+
+glimpse(select3)
+
+```
+
+vamos filtrar a base apenas imóveis do Tipo = Casa
+```{r}
+
+casas = filter(aluguel_t, Tipo == "Casa")
+casas
+
+glimpse(casas)
+
+```

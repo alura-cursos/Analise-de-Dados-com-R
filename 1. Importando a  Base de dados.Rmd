@@ -1,0 +1,40 @@
+---
+title: "Análise e visualização de dados: Ciência de dados com R"
+output: html_notebook
+---
+
+#Carregando pacotes
+```{r}
+#instalação do pacote "readr"
+#install.packages("readr")
+#install.packages("tidyverse")
+
+library(tidyverse)
+library(readr)
+library(purrr)
+
+```
+
+#Importando a base de dados de aluguel.csv
+```{r}
+library(readr)
+aluguel <- read_delim("C:/Mauro/R/Curso/aluguel.csv", ";", escape_double = FALSE, trim_ws = TRUE)
+View(aluguel)
+
+```
+
+#Entendendo a base de dados
+```{r}
+str(aluguel)
+
+```
+
+#Visualizando as primeiras linhas
+```{r}
+head(aluguel, 10)
+
+```
+
+
+
+
