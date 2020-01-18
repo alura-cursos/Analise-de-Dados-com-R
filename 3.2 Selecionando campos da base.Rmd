@@ -1,0 +1,27 @@
+---
+title: "Selecionando campos da da base de dados"
+output: html_notebook
+---
+
+#Fazendo a seleção de campos da base de dados
+```{r}
+selec1 = select(aluguel_t, Tipo, Bairro, Quartos, Area, Valor)
+
+glimpse(selec1)
+```
+
+#Outra selecao - retirando campos da base de dados
+```{r}
+selec2 = select(aluguel_t, -IPTU)
+
+glimpse(selec2)
+```
+
+#usando seleção contendo alguns caracteres
+
+```{r}
+select3 = select(aluguel_t, contains("Cond"))
+
+glimpse(select3)
+
+```

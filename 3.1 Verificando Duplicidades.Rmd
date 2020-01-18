@@ -1,0 +1,22 @@
+---
+title: "Vericando e retirando duplicidades"
+output: html_notebook 
+---
+#Organizando a base de dados
+#Vamos fazer os seguinte filtros na base:
+
+#Carregando o pacote Tidyverse
+```{r}
+#install.packages("tidyverse")
+library(tidyverse)
+```
+
+
+#Vericando e retirando duplicidades no dataframe aluguel
+```{r}
+#Utilizando a base aluguel_t, já sem duplicidades
+aluguel_t = unique(aluguel)
+
+glimpse(aluguel_t)
+
+```

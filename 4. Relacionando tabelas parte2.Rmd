@@ -1,0 +1,70 @@
+---
+title:  "Análise e visualização de dados: Ciência de dados com R"
+output: html_notebook
+---
+
+#Relacionamento entre Diferentes tabelas (data frames)
+
+carregar o pacote tidyr
+```{r}
+library(tidyr)
+```
+#Criando as tabelas como exemplo: Cargo e Local
+
+#primeira tabela: Cargo
+```{r}
+Cargo = data.frame(c("Andre", "Marcos", "Fernanda", "Julia"), c("Analista", "Analista", "Coordenador", "Gerente"))
+
+colnames(Cargo) = c("nome", "cargo")
+
+Cargo
+```
+
+#Segunda tabela: Local
+```{r}
+Local = data.frame(c("Fabio", "Marcos", "Fernanda", "Julia"), c("Comercial", "CRM", "TI", "RH"))
+
+colnames(Local) = c("nome", "local")
+
+Local
+```
+#Usando left join
+```{r}
+Cargo %>% 
+  left_join(Local, by = "nome")
+
+```
+
+# usando right join
+
+```{r}
+Cargo %>% 
+  right_join(Local, by = "nome")
+```
+
+#Usando inner join
+```{r}
+Cargo %>% 
+  inner_join(Local, by = "nome")
+```
+
+#usando Full Join
+```{r}
+Cargo %>% 
+  full_join(Local, by = "nome")
+```
+
+#usandp Anti join pela primeira tabela: Cargo
+
+```{r}
+Cargo %>% 
+  anti_join(Local, by = "nome")
+
+```
+#usando Anti join pela segunda tabela: Local
+
+```{r}
+Local %>% 
+  anti_join(Cargo, by = "nome")
+
+```

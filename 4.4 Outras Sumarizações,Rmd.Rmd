@@ -1,0 +1,30 @@
+---
+title: "Outras sumarizações"
+output: html_notebook
+---
+
+#Outras sumarizações
+
+```{r}
+summary(aluguel_t)
+```
+
+#Fazendo a operação de agrupamento sem valores ausentes
+```{r}
+aluguel_t %>% 
+  group_by(Tipo) %>% 
+    summarise(qtde = n(), media = mean(Valor, na.rm = T))
+
+```
+
+#Combinando várias summarizações
+
+```{r}
+aluguel_t %>% 
+  group_by(Tipo) %>% 
+  summarise( valor_medio = mean(Valor, na.rm = T), 
+             valor_minimo = min(Valor, na.rm = T),
+             valor_maximo = max(Valor, na.rm = T),
+             Total = n() )
+```
+

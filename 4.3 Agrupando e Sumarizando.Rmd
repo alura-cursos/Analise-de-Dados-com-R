@@ -1,0 +1,64 @@
+---
+title: "Agrupando e sumarizando Informações"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+```
+
+
+
+#Gerando novas informações de forma agrupada e sumarizada por outras informações
+#group_by
+#summarize
+
+```{r}
+aluguel_t %>% 
+  group_by(Tipo) %>% 
+  summarise(qtde = n())
+```
+
+#Agrupamento por mais de um campo: 
+#Tipo e o Bairro
+
+```{r}
+aluguel_t %>% 
+  group_by(Tipo, Bairro) %>% 
+  summarise(qtde = n())
+
+```
+
+#utilizando outros comandos no summarize para resumir a base de dados:
+#max, min, media, ...
+
+```{r}
+aluguel_t %>% 
+  group_by(Tipo) %>% 
+  summarise(qtde = n(), media = mean(Valor))
+```
+
+#Um outro camando; summary
+
+```{r}
+summary(aluguel_t)
+```
+
+#Fazendo a operação de agrupamento sem valores ausentes
+```{r}
+aluguel_t %>% 
+  group_by(Tipo) %>% 
+    summarise(qtde = n(), media = mean(Valor, na.rm = T))
+
+```
+
+#Combinando várias summarizações
+
+```{r}
+aluguel_t %>% 
+  group_by(Tipo) %>% 
+  summarise( valor_medio = mean(Valor, na.rm = T), 
+             valor_minimo = min(Valor, na.rm = T),
+             valor_maximo = max(Valor, na.rm = T),
+             Total = n() )
+```

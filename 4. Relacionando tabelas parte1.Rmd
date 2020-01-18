@@ -1,0 +1,36 @@
+---
+title: "Relacionamento entre tabelas"
+output: html_notebook
+---
+
+#Relacionamento entre Diferentes tabelas (data frames)
+
+carregar o pacote tidyverse
+```{r}
+library(tidyverse)
+library(tidyr)
+```
+#Criando as tabelas como exemplo: Cargo e Local
+
+#primeira tabela: Cargo
+```{r}
+Cargo = data.frame(c("Andre", "Marcos", "Fernanda", "Julia"), c("Analista", "Analista", "Coordenador", "Gerente"))
+
+colnames(Cargo) = c("nome", "cargo")
+
+Cargo
+```
+
+#Segunda tabela: Local
+```{r}
+Local = data.frame(c("Fabio", "Marcos", "Fernanda", "Julia"), c("Comercial", "CRM", "TI", "RH"))
+
+colnames(Local) = c("nome", "local")
+
+Local
+```
+#Usando left join
+```{r}
+Cargo %>% 
+  left_join(Local, by = "nome")
+```
